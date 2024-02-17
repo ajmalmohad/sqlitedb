@@ -1,0 +1,8 @@
+version: '3'
+services:
+  app:
+    image: ruby:3.1.0
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ["./runtest.sh"]
