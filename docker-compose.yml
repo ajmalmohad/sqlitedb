@@ -5,4 +5,4 @@ services:
     volumes:
       - .:/app
     working_dir: /app
-    command: ["./runtest.sh"]
+    command: /bin/bash -c "bundle install && gcc -o main main.c && bundle exec rspec"
