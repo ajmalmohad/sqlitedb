@@ -117,7 +117,7 @@ void print_row(Row *row) {
 
 // Table related functions
 void *get_page(Pager *pager, uint32_t page_num) {
-  if (page_num > TABLE_MAX_PAGES) {
+  if (page_num >= TABLE_MAX_PAGES) {
     printf("Tried to fetch page number out of bounds. %d > %d\n", page_num,
            TABLE_MAX_PAGES);
     exit(EXIT_FAILURE);
@@ -133,7 +133,7 @@ void *get_page(Pager *pager, uint32_t page_num) {
       num_pages += 1;
     }
 
-    if (page_num <= num_pages) {
+    if (page_num < num_pages) {
       lseek(pager->file_descriptor, page_num * PAGE_SIZE, SEEK_SET);
       ssize_t bytes_read = read(pager->file_descriptor, page, PAGE_SIZE);
       if (bytes_read == -1) {
