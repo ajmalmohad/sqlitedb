@@ -2,7 +2,5 @@ FROM ruby:3.1.0
 
 WORKDIR /app
 
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile ./
 RUN bundle install
-
-CMD ["/bin/bash", "-c", "gcc -o main main.c && bundle exec rspec"]
