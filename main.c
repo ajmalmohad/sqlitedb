@@ -76,6 +76,8 @@ typedef struct {
   Row row_to_insert;
 } Statement;
 
+typedef enum { NODE_INTERNAL, NODE_LEAF } NodeType;
+
 // InputBuffer related functions
 InputBuffer *new_input_buffer() {
   InputBuffer *input_buffer = malloc(sizeof(InputBuffer));
