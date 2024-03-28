@@ -2,7 +2,6 @@
 #include "pager.h"
 #include "node.h"
 
-// Cursor related functions
 /*
  * Initializes a cursor to the start of the table.
  *
