@@ -3,11 +3,44 @@
 #include "pager.h"
 #include "serialize.h"
 
+/*
+ * Initializes a leaf node.
+ *
+ * Parameters:
+ * - node: A pointer to the node to be initialized.
+ *
+ * The function sets the type of the node to NODE_LEAF using the set_node_type
+ * function. It then sets the number of cells in the leaf node to 0, indicating
+ * that the leaf node is empty.
+ *
+ * Does not return a value.
+ */
 void initialize_leaf_node(void *node) {
   set_node_type(node, NODE_LEAF);
   *leaf_node_num_cells(node) = 0;
 }
 
+/*
+ * Inserts a key-value pair into a leaf node.
+ *
+ * Parameters:
+ * - cursor: A pointer to the Cursor structure, which indicates where to insert
+ * the key-value pair.
+ * - key: The key to be inserted.
+ * - value: A pointer to the Row structure to be inserted.
+ *
+ * The function first retrieves the leaf node where the key-value pair is to be
+ * inserted. It then checks if the leaf node is full. If it is, the function
+ * prints an error message and exits.
+ *
+ * If the insertion point is not at the end of the leaf node, the function makes
+ * room for the new cell by shifting the existing cells to the right.
+ *
+ * The function then increments the number of cells in the leaf node, sets the
+ * key of the new cell, and serializes the value into the new cell.
+ *
+ * Does not return a value.
+ */
 void leaf_node_insert(Cursor *cursor, uint32_t key, Row *value) {
   void *node = get_page(cursor->table->pager, cursor->page_num);
 
