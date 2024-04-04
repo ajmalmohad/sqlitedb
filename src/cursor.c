@@ -1,6 +1,6 @@
 #include "cursor.h"
-#include "pager.h"
 #include "node.h"
+#include "pager.h"
 
 /*
  * Initializes a cursor to the start of the table.
@@ -35,8 +35,9 @@ Cursor *table_start(Table *table) {
  *
  * The function performs a binary search in the leaf node for the given key.
  * It initializes a new Cursor and sets its 'table' and 'page_num' fields.
- * If the key is found, it sets the 'cell_num' field of the cursor to the index of the key.
- * If the key is not found, it sets 'cell_num' to the index where the key should be inserted.
+ * If the key is found, it sets the 'cell_num' field of the cursor to the index
+ * of the key. If the key is not found, it sets 'cell_num' to the index where
+ * the key should be inserted.
  *
  * Returns a pointer to the newly created Cursor.
  */
@@ -78,10 +79,11 @@ Cursor *leaf_node_find(Table *table, uint32_t page_num, uint32_t key) {
  *
  * The function retrieves the root node of the table and checks its type.
  * If the root node is a leaf node, it calls leaf_node_find to find the key.
- * If the root node is an internal node, it searches the internal nodes. 
+ * If the root node is an internal node, it searches the internal nodes.
  * TODO : searching in internal nodes is not yet implemented
  *
- * Returns a pointer to a Cursor that points to the key if it's found, or where it should be inserted if not.
+ * Returns a pointer to a Cursor that points to the key if it's found, or where
+ * it should be inserted if not.
  */
 Cursor *table_find(Table *table, uint32_t key) {
   uint32_t root_page_num = table->root_page_num;
@@ -103,9 +105,9 @@ Cursor *table_find(Table *table, uint32_t key) {
  *
  * Increments the 'cell_num' field of the cursor.
  * If the cursor is at the end of the table, it sets 'end_of_table' to true.
- * 
- * Note: This function currently only handles tables that fit within a single page. 
- * It would need to be modified to handle tables that span multiple pages.
+ *
+ * Note: This function currently only handles tables that fit within a single
+ * page. It would need to be modified to handle tables that span multiple pages.
  */
 void cursor_advance(Cursor *cursor) {
   uint32_t page_num = cursor->page_num;
@@ -124,7 +126,8 @@ void cursor_advance(Cursor *cursor) {
  * - cursor: A pointer to the Cursor structure.
  *
  * The function retrieves the page that the cursor is on by calling get_page.
- * It then calls leaf_node_value to get a pointer to the value of the cell that the cursor is pointing to.
+ * It then calls leaf_node_value to get a pointer to the value of the cell that
+ * the cursor is pointing to.
  *
  * Returns a pointer to the value at the cursor's current position.
  */

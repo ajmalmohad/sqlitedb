@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-g
-SOURCES=./src/constants.c ./src/node.c ./src/pager.c ./src/cursor.c ./src/main.c
+SOURCES=./src/constants.c ./src/node.c ./src/btree.c ./src/serialize.c ./src/pager.c ./src/cursor.c ./src/main.c
 EXECUTABLE=main
 DB_FILE=main.db
 

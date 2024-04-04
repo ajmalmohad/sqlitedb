@@ -1,7 +1,7 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include <stdint.h>
+#include "constants.h"
 
 uint32_t *leaf_node_num_cells(void *node);
 void *leaf_node_cell(void *node, uint32_t cell_num);
