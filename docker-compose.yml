@@ -7,4 +7,4 @@ services:
     volumes:
       - .:/app
     working_dir: /app
-    command: /bin/bash -c "gcc -o main main.c && bundle exec rspec && rm Gemfile.lock && rm test.db"
+    command: /bin/bash -c "make clean && make && bundle exec rspec && rm Gemfile.lock && rm test.db"
